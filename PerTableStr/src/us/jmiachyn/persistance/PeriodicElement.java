@@ -16,7 +16,7 @@ public class PeriodicElement implements Element, Serializable {
     private String elementDescription;
     private String elementAbbreviation;
     private double atomicWeight;
-    private boolean isMetallic;
+    private boolean metallic;
     private String imageURI;
 
     
@@ -57,11 +57,7 @@ public class PeriodicElement implements Element, Serializable {
         return this.atomicWeight;
     }
 
-    //@return Metallic Status
-    public boolean isMetallic() {
-        return this.isMetallic;
-    }
-
+   
     //Set Element Name
     //@param the Element's Name
     @Override
@@ -107,13 +103,22 @@ public class PeriodicElement implements Element, Serializable {
     	this.atomicWeight = atomicWeight;
     }
 
+	/**
+	 * @return the isMetallic
+	 */
+	public boolean isMetallic() {
+		return metallic;
+	}
 
-    //Set Metallic Status
-    //@param the Metallic Status (bool) TRUE = is metallic
-    public void setMetallic(boolean isMetallic){
-    	
-    	this.isMetallic = isMetallic;
-    }
+	/**
+	 * @param isMetallic the isMetallic to set
+	 */
+	public void setMetallic(boolean metallic) {
+		this.metallic = metallic;
+	}
+
+
+   
 
 
    

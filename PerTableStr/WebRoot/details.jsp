@@ -1,35 +1,22 @@
 <%-- 
     Document   : details.jsp
     Created on : May 26, 2015, 4:12:32 PM
-    Author     : Chris Hardin, Yevhenii Miachyn
+    Author     : Yevhenii Miachyn
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-<%@page errorPage = "errorPage.jsp" %>
-
-<%@page import="com.java.main.business.ElementSearchList"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 
-        <%
-            //myID Used as identifier for specific element
-            int myID = Integer.parseInt(request.getParameter("ID")); 
-            myID -= 1;
-
-            //load CSV file and populate list of all elements
-            //(myID used to pull details on specific element)
-            String elementListPath = application.getRealPath(application.getInitParameter("elementListPath"));
-            ElementSearchList allElements = new ElementSearchList("All",elementListPath);
-        %>
-
+        
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>
-            Details on : 
-                <% out.println( String.valueOf( allElements.getElement(myID).getElementName())); %>
+            Details on : <s:property value="element.elementName" />
+                
         </title>
 
             <style type="text/css">
@@ -102,13 +89,13 @@ body {
        <table width="700" border="0" cellspacing="0" cellpadding="2" align="center">
   <tr>
     <td colspan="2" align="center" bgcolor="#074358" class="style3" height="40">
-                <% out.println( String.valueOf( allElements.getElement(myID).getElementName())); %>
+                <s:property value="element.elementName" />
     </td>
   </tr>
   <tr>
     <td width="300" rowspan="2" valign="top">
         <img
-            src="images/<% out.println( String.valueOf( allElements.getElement(myID).getImageURI())); %>"
+            src="images/<s:property value="element.imageURI" />"
             width="300"
             height="300"
            />
@@ -117,40 +104,37 @@ body {
       <tr>
         <td width="135">Abbreviation:</td>
         <td width="251">
-            <% out.println( String.valueOf( allElements.getElement(myID).getElementAbbreviation())); %>
+            <s:property value="element.elementAbbreviation" />
         </td>
       </tr>
       <tr>
         <td>Atomic Number:</td>
         <td>
-            <% out.println( String.valueOf( allElements.getElement(myID).getAtomicNumber())); %>
+           <s:property value="element.atomicNumber" />
         </td>
       </tr>
       <tr>
         <td>Atomic Weight:</td>
         <td>
-            <%
-            	out.println( String.valueOf( allElements.getElement(myID).getAtomicWeight()));
-            %>
+           <s:property value="element.atomicWeight" />
         </td>
       </tr>
       <tr>
         <td>Metallic:</td>
         <td>
-            <% 
-                if(allElements.getElement(myID).isMetallic()){
-                    out.println("Yes");
-                    }else{
-                    out.println("No");
-                }
-            %>
+           <s:if test="%{element.isMetallic}">
+              YES
+           </s:if>
+           <s:else>
+              NO
+           </s:else>
         </td>
       </tr>
     </table></td>
   </tr>
 
   <tr>
-    <td><% out.println( String.valueOf( allElements.getElement(myID).getElementDescription())); %>
+    <td><s:property value="element.elementDescription" />
     </td>
   </tr>
 </table>

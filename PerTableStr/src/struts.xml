@@ -11,6 +11,12 @@
 			
 	</action>
 	
+	<action name="details" class="us.jmiachyn.service.DetailsAction">
+	
+	<result name="success">/details.jsp</result>
+	
+	</action>
+	
 	
 		
 	</package>

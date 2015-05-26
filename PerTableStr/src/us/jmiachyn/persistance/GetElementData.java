@@ -89,7 +89,7 @@ public class GetElementData{
          element.setElementName(splitOutput[2]);
          element.setAtomicWeight(Double.parseDouble(splitOutput[3]));
          element.setElementDescription(splitOutput[4]);
-         element.setMetallic(Boolean.parseBoolean(splitOutput[5]));
+         element.setMetallic(Boolean.parseBoolean(splitOutput[5].toLowerCase()));
          element.setImageURI(splitOutput[6]);
          
          elementList.add(element);
