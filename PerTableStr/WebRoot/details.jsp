@@ -55,27 +55,7 @@ body {
 <tr>
         <td height="150" align="right" valign="bottom" background="images/Backgrounds/Header.jpg" bgcolor="#667D7F">
 
-         <!--
-                form1 will submit search query checking all items of an element for the
-                requested String
-          -->
-      <s:form action="elementSearch">
-                <table width="500" border="0" cellspacing="0" cellpadding="2">
-                    <tr>
-                        <td align="center">
-                            <span class="style2">Search for an Element:                            </span>
-                            <strong>
-                            <input name="searchValue" type="text" id="searchValue" size="20" />
-                            </strong>                            <br>
-            <br />
-                            <input type="submit" name="button" id="button" value="Search Now" />
-                            <br>
-                            <br>
-                    </td>
-                  </tr>
-                </table>
-        </s:form>
-     </td>
+</td>
   </tr>
     <tr>
       <td height="15">
