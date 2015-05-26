@@ -117,7 +117,7 @@ body {
     <td width="43" height="40" align="center" bgcolor="#00CCFF">
         <a href="details.jsp?ID=1" target="_blank">
        
-              <s:property value="#attr.data"/> 
+              <s:property value="#attr.elementList[0]"/> 
         </a>
     </td>
     <td width="36">&nbsp;</td>
@@ -140,7 +140,7 @@ body {
     <td width="36" align="center" bgcolor="#FFCC66">
         <a href="details.jsp?ID=2" target="_blank"> 
         <!-- TODO PUT element name starting from 0 to 101 --> 
-          <s:property value="#attr.data"/> 
+          <s:property value="#attr.elementList[1]"/> 
         </a></td>
   </tr>
   <tr class="style1">
