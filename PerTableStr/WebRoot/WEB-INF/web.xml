@@ -23,6 +23,11 @@
   	<param-name>elementListPath</param-name>
   	<param-value>/WEB-INF/ElementList.csv</param-value>
   </context-param>
+  
+  <context-param>
+  	<param-name>admin email</param-name>
+  	<param-value>miachyn_yevhenii@yahoo.com</param-value>
+  </context-param>
     
   </web-app>
 

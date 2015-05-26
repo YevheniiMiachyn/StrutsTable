@@ -17,6 +17,12 @@
 	
 	</action>
 	
+	<action name="elementSearch" class="us.jmiachyn.service.searchResultAction">
+	
+	<result name="success">/underconstruction.html</result>
+			
+	</action>
+	
 	
 		
 	</package>

@@ -46,13 +46,13 @@ body {
                 requested String
           -->
     
-       <s:form id="form1" name="form1" action="searchResults" >
+       <s:form  action="elementSearch" >
                 <table width="500" border="0" cellspacing="0" cellpadding="2">
                     <tr>
                         <td align="center">
                             <span class="style2">Search for an Element:                            </span>
                             <strong>
-                            <input name="SearchValue" type="text" id="SearchValue" size="20" />
+                            <input name="searchValue" type="text" id="searchValue" size="20" />
                             </strong>                            <br>
             <br />
                             <input type="submit" name="button" id="button" value="Search Now"/>
