@@ -26,7 +26,7 @@ public class DetailsAction extends ActionSupport implements ServletContextAware 
 	public String execute(){
 		
 	this.element = new ElementDao(context).getElement(ID);	
-		
+	
 		return SUCCESS;
 	}
 
@@ -53,8 +53,5 @@ public class DetailsAction extends ActionSupport implements ServletContextAware 
 	}
 
 
-	public void setElement(PeriodicElement element) {
-		this.element = element;
-	}
 
 }

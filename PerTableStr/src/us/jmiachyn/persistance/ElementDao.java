@@ -20,7 +20,12 @@ public class ElementDao {
 		@SuppressWarnings("unchecked")
 		ArrayList<PeriodicElement>	elements = (ArrayList<PeriodicElement>) this.context.getAttribute(ELEMENT_LIST_ATTRIBUTE);
 		this.element = elements.get(Id-1);
-		this.element.setMetallic(true);
+		
+		if(element.isMetallic())
+			element.setIsElementMetallic("YES");
+			else
+			element.setIsElementMetallic("NO");	
+		
 				
 		return element;
 	}

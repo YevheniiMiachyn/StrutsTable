@@ -122,12 +122,7 @@ body {
       <tr>
         <td>Metallic:</td>
         <td>
-           <s:if test="%{element.isMetallic}">
-              YES
-           </s:if>
-           <s:else>
-              NO
-           </s:else>
+           <s:property value="element.isElementMetallic"/>
         </td>
       </tr>
     </table></td>
