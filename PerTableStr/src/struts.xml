@@ -20,6 +20,8 @@
 	<action name="elementSearch" class="us.jmiachyn.service.searchResultAction">
 	
 	<result name="success">/underconstruction.html</result>
+	
+	<result name="none">/underconstruction.html</result>
 			
 	</action>
 	

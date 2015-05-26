@@ -46,7 +46,7 @@ body {
                 requested String
           -->
     
-       <s:form  action="elementSearch" >
+       <s:form  action="elementSearch" target="_blank">
                 <table width="500" border="0" cellspacing="0" cellpadding="2">
                     <tr>
                         <td align="center">

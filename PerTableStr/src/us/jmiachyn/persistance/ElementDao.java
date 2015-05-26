@@ -14,6 +14,12 @@ public class ElementDao {
 		this.context = context;
 		
 	}
+	
+	/**Returns PeriodicElement basing on its Id
+	 * 
+	 * @param Id
+	 * @return PeriodicElement
+	 */
 
 	public PeriodicElement getElement(int Id) {
 		
@@ -28,6 +34,18 @@ public class ElementDao {
 		
 				
 		return element;
+	}
+	
+	/**Return a list of possible elements basing on search criteria from a user or null if nothing was found
+	 * 
+	 * @param elementToSearch
+	 * @return ArrayList <PeriodicElement>
+	 */
+	
+	public ArrayList <PeriodicElement> searchElement(String elementToSearch){
+		
+		
+		return null;
 	}
 	
 	
