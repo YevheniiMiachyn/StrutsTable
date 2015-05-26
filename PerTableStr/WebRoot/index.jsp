@@ -2,12 +2,11 @@
   <!--   Document   : index
     Created on : May 23, 2015, 12:43:21 AM
     Author     : Yevhenii Miachyn -->
+    
+    
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-
-<%@page errorPage = "errorPage.jsp" %>
-
 
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -36,14 +35,6 @@ body {
 </head>
 <body>
 
-
-      <%--   <%
-            //Load CSV file and populate list of all elements
-            String elementListPath = application.getRealPath(application.getInitParameter("elementListPath"));
-            com.java.main.business.ElementSearchList allElements = new com.java.main.business.ElementSearchList("All",elementListPath);
-
-        %>
- --%>
  
 <table width="800" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#667D7F">
 
@@ -54,22 +45,7 @@ body {
                 form1 will submit search query checking all items of an element for the
                 requested String
           -->
-    <%--   <s:form  action="searchResults" >
-                <table width="500" border="0" cellspacing="0" cellpadding="2">
-                    <tr>
-                        <td align="right" valign="top">
-                            <span class="style2">Search for an Element:                            </span>
-                            
-                            <s:textfield name="SearchValue"  />
-                           
-                            <s:submit value="Search Now" />
-                            
-                           
-                    </td>
-                  </tr>
-                </table>
-        </s:form>
- --%> 
+    
        <s:form id="form1" name="form1" action="searchResults" >
                 <table width="500" border="0" cellspacing="0" cellpadding="2">
                     <tr>
