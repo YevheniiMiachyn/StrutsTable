@@ -26,6 +26,8 @@ public class TableServletContextListener implements ServletContextListener {
 
 	
 	private static ServletContext context;
+	private ArrayList<PeriodicElement> elementList;
+	private ArrayList<String> elementNames, elementAbbr;
 	
 
 	@Override
@@ -35,13 +37,17 @@ public class TableServletContextListener implements ServletContextListener {
         
         try {
                     	        	
-        	        	 
- 		//returns ArrayList of Elements   
-		ArrayList<PeriodicElement> elementList = new GetElementData(context).getElements();
+        GetElementData data = new GetElementData(context);	        	 
+ 		elementList = data.getElements();
+ 		elementNames = data.getElementNames();
+ 		elementAbbr = data.getElementAbbr();
+		
         	       	
               	
 		//Use setAttribute method to make this data available to everyone.	
-        context.setAttribute("elementList", elementList); 
+        context.setAttribute("elementList", elementList);
+        context.setAttribute("elementName", elementNames);
+        context.setAttribute("elementAbbr", elementAbbr);
         
         } catch(Exception e) {
         	e.printStackTrace();

@@ -19,14 +19,14 @@ public class searchResultAction extends ActionSupport implements ServletContextA
 	private static final long serialVersionUID = -2995079796565209370L;
 	private ServletContext context;
 	private String searchValue;
-	private ArrayList <PeriodicElement> elementList;
+	private PeriodicElement element;
 	
 	
 	public String execute(){
 		
-		 elementList = new ElementDao(context).searchElement(searchValue);
+		 element = new ElementDao(context).searchElement(searchValue);
 	
-		 if(elementList != null)
+		 if(element != null)
 		     return SUCCESS;
 		 else
 			 return NONE;
@@ -59,10 +59,14 @@ public class searchResultAction extends ActionSupport implements ServletContextA
 
 
 
-	public ArrayList<PeriodicElement> getElementList() {
-		return elementList;
+	public PeriodicElement getElement() {
+		return element;
 	}
 
+
+
+
+	
 
 
 }

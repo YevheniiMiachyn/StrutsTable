@@ -25,6 +25,8 @@ public class GetElementData{
 	private static PeriodicElement element;
 	private static ArrayList<PeriodicElement> elementList;
 	private static final String ELEMENT_LIST_PATH = "elementListPath";
+	private static ArrayList <String> elementNames, elementAbbr;
+	
 	
 	
 	
@@ -33,13 +35,15 @@ public class GetElementData{
 	public GetElementData(ServletContext context) throws IOException, URISyntaxException{
 		GetElementData.context = context;
 		elementList = new ArrayList<>();
+		elementNames = new ArrayList<>();
+		elementAbbr = new ArrayList<>();
        	loadElements();
-		  
+		 
 		   
 		   
 	}
 	
-		
+	
 
 	/**Reads data from ElementList.csv file
 	 * 
@@ -86,10 +90,16 @@ public class GetElementData{
         
          element.setAtomicNumber(Integer.parseInt(splitOutput[0]));
          element.setElementAbbreviation(splitOutput[1]);
+         elementAbbr.add(splitOutput[1]);//adds element's abbreviation into collection
          element.setElementName(splitOutput[2]);
+         elementNames.add(splitOutput[2]);//adds element names into collection
          element.setAtomicWeight(Double.parseDouble(splitOutput[3]));
          element.setElementDescription(splitOutput[4]);
          element.setMetallic(Boolean.parseBoolean(splitOutput[5].toLowerCase()));
+         if(element.isMetallic())
+ 			element.setIsElementMetallic("YES");
+ 			else
+ 			element.setIsElementMetallic("NO");	
          element.setImageURI(splitOutput[6]);
          
          elementList.add(element);
@@ -106,6 +116,18 @@ public class GetElementData{
 			 
 			 return elementList;
 		 }
+
+
+
+	public ArrayList<String> getElementNames() {
+		return elementNames;
+	}
+
+
+
+	public ArrayList<String> getElementAbbr() {
+		return elementAbbr;
+	}
 		
 	
 
