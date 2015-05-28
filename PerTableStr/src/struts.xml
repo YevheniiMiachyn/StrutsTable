@@ -11,6 +11,7 @@
 			
 	</action>
 	
+		
 	<action name="details" class="us.jmiachyn.service.DetailsAction">
 	
 	<result name="success">/details.jsp</result>
@@ -21,7 +22,9 @@
 	
 	<result name="success">/details.jsp</result>
 	
-	<result name="none">/underconstruction.html</result>
+	<result name="none">/none.jsp</result>
+	
+	<result name="input">/none.jsp</result>
 			
 	</action>
 	

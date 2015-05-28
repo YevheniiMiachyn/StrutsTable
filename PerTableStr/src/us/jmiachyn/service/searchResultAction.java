@@ -1,9 +1,9 @@
 package us.jmiachyn.service;
 
-import java.util.ArrayList;
-
 import javax.servlet.ServletContext;
 
+
+import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.util.ServletContextAware;
 
 import us.jmiachyn.persistance.ElementDao;
@@ -20,6 +20,15 @@ public class searchResultAction extends ActionSupport implements ServletContextA
 	private ServletContext context;
 	private String searchValue;
 	private PeriodicElement element;
+	
+	@Override
+	public void validate() {
+		
+		if(StringUtils.isEmpty(getSearchValue()) || StringUtils.isBlank(getSearchValue()))
+			addFieldError(INPUT, "enter element to search");
+		
+		
+	}
 	
 	
 	public String execute(){

@@ -52,6 +52,15 @@ public class ElementDao {
 						return this.getElement(i+1);
 			
 		}
+		String abbr;
+		
+		for(int i=0; i < elementAbbr.size(); i++ ){
+			
+			abbr = elementAbbr.get(i);
+				if(abbr.equalsIgnoreCase(elementToSearch))
+					return this.getElement(i+1);
+			
+		}
 			
 		
 			
