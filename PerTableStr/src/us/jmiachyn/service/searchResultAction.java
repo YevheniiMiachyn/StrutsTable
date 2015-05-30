@@ -1,5 +1,7 @@
 package us.jmiachyn.service;
 
+import java.util.ArrayList;
+
 import javax.servlet.ServletContext;
 
 
@@ -20,6 +22,7 @@ public class searchResultAction extends ActionSupport implements ServletContextA
 	private ServletContext context;
 	private String searchValue;
 	private PeriodicElement element;
+	private ArrayList<PeriodicElement> listofFoundElements;
 	
 	@Override
 	public void validate() {
@@ -33,10 +36,15 @@ public class searchResultAction extends ActionSupport implements ServletContextA
 	
 	public String execute(){
 		
-		 element = new ElementDao(context).searchElement(searchValue);
+		listofFoundElements = new ElementDao(context).searchElement(searchValue);
 	
-		 if(element != null)
+		 if(listofFoundElements.size() == 1){
+			 element = listofFoundElements.get(0);
 		     return SUCCESS;
+		 }
+		 else if(listofFoundElements.size() > 1)
+			 
+			 return "success2";
 		 else
 			 return NONE;
 	}
@@ -70,6 +78,11 @@ public class searchResultAction extends ActionSupport implements ServletContextA
 
 	public PeriodicElement getElement() {
 		return element;
+	}
+
+
+	public ArrayList<PeriodicElement> getListofFoundElements() {
+		return listofFoundElements;
 	}
 
 

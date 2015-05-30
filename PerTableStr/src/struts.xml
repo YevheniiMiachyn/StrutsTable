@@ -25,6 +25,8 @@
 	<result name="none">/none.jsp</result>
 	
 	<result name="input">/none.jsp</result>
+	
+	<result name="success2">/none.jsp</result>
 			
 	</action>
 	
