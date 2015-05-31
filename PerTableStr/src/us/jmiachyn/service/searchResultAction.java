@@ -23,6 +23,7 @@ public class searchResultAction extends ActionSupport implements ServletContextA
 	private String searchValue;
 	private PeriodicElement element;
 	private ArrayList<PeriodicElement> listofFoundElements;
+	private static final String SUCCESS2 = "success2";
 	
 	@Override
 	public void validate() {
@@ -38,15 +39,21 @@ public class searchResultAction extends ActionSupport implements ServletContextA
 		
 		listofFoundElements = new ElementDao(context).searchElement(searchValue);
 	
-		 if(listofFoundElements.size() == 1){
-			 element = listofFoundElements.get(0);
+		if(listofFoundElements == null)
+			return NONE;
+		
+		else if(listofFoundElements.size() == 1 ){
+			 
+			 for(PeriodicElement elarg : listofFoundElements)
+				  element = elarg;
 		     return SUCCESS;
 		 }
 		 else if(listofFoundElements.size() > 1)
-			 
-			 return "success2";
-		 else
-			 return NONE;
+						 
+			 return SUCCESS2;
+		
+		 else return NONE;
+		 
 	}
 	
 	

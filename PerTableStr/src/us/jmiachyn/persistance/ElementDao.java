@@ -1,14 +1,12 @@
 package us.jmiachyn.persistance;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.ListIterator;
 
 
 import javax.servlet.ServletContext;
 
-import org.apache.commons.lang3.CharSequenceUtils;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.*;
 
 
 
@@ -18,9 +16,10 @@ public class ElementDao {
 	private final String ELEMENT_LIST_ATTRIBUTE = "elementList";
 	private final String ELEMENT_NAME_ATTRIBUTE = "elementName";
 	private final String ELEMENT_ABBR_ATTRUBUTE = "elementAbbr";
-	private PeriodicElement element,elem;
+	private PeriodicElement element;
 	private ArrayList<PeriodicElement> elements, foundElements;
 	private ArrayList<String> elementName, elementAbbr;
+	private String elementNameToSearch;
 	
 	@SuppressWarnings("unchecked")
 	public ElementDao(ServletContext context) {
@@ -28,7 +27,7 @@ public class ElementDao {
 		elementName = (ArrayList<String>) this.context.getAttribute(ELEMENT_NAME_ATTRIBUTE);
 		elementAbbr = (ArrayList<String>) this.context.getAttribute(ELEMENT_ABBR_ATTRUBUTE);
 		elements = (ArrayList<PeriodicElement>) this.context.getAttribute(ELEMENT_LIST_ATTRIBUTE);
-		foundElements = new ArrayList<>();
+		
 	}
 	
 	/**Returns PeriodicElement basing on its Id
@@ -52,67 +51,56 @@ public class ElementDao {
 	 */
 	
 	public ArrayList <PeriodicElement> searchElement(String elementToSearch){
+		foundElements = new ArrayList<>();
+		this.elementNameToSearch = elementToSearch.toLowerCase();
 		
 		String name;
-		for (int i = 0; i < elementName.size(); i++){
-			name = elementName.get(i);
-				if (name.equalsIgnoreCase(elementToSearch)){
-					element = this.getElement(i+1);
+		for (int i = 0; i < elements.size(); i++){
+			name = elements.get(i).getElementName();
+				if (name.equalsIgnoreCase(elementNameToSearch)){
+					element = this.elements.get(i);
 				foundElements.add(element);
 						return foundElements;
 				}
 		}
 		String abbr;
 		
-		for(int i=0; i < elementAbbr.size(); i++ ){
+		for(int i=0; i < elements.size(); i++ ){
 			
-			abbr = elementAbbr.get(i);
-				if(abbr.equalsIgnoreCase(elementToSearch)){
-					elem = this.getElement(i+1);
-				foundElements.add(elem);
+			abbr = elements.get(i).getElementAbbreviation();
+				if(abbr.equalsIgnoreCase(elementNameToSearch)){
+					element = this.elements.get(i);
+				foundElements.add(element);
 						return foundElements;
 				}
 		
 		}
 		
-		String matchingElement;
-		ArrayList <Integer> elementIndex = new ArrayList<>();
-		ListIterator<String> it = elementName.listIterator();
-		int i=0;
-		double score=0.0;
-		while(it.hasNext()){
+	
+			findMatchingElements();
 			
+			if(!foundElements.isEmpty())
+						return foundElements;
+			else
+						return null;
+	}
+	
+	private void findMatchingElements(){
+		String elemName;
+		int score;
+		for(int i=0; i < elements.size(); i++){
+			element = elements.get(i);
+			elemName = element.getElementName().toLowerCase();
+			score = StringUtils.getLevenshteinDistance(elemName, elementNameToSearch,5);
 			
-			matchingElement = it.next();
-			i++;
-			
-			score = StringUtils.getJaroWinklerDistance(matchingElement, elementToSearch);
-			
-				
-				if (score >= 0.8){
-					elementIndex.add(i);
-					
-				}
-				else continue;
-			
+			if(score >= 1 & elemName.startsWith(elementNameToSearch.substring(0, 1)))
+				foundElements.add(element);
+			else
+				continue;
 			
 		}
-			
-		if(!elementIndex.isEmpty()){
-			
-			for(Integer in : elementIndex){
-				
-				foundElements.add(elements.get(in));
-				
-			}
-			return foundElements;
-		}
-			
-			
 		
 		
-		
-		return null;
 	}
 	
 	
