@@ -1,4 +1,4 @@
-package us.jmiachyn.persistance;
+package us.jmiachyn.service;
 
 import java.util.ArrayList;
 import java.util.ListIterator;
@@ -8,9 +8,11 @@ import javax.servlet.ServletContext;
 
 import org.apache.commons.lang3.*;
 
+import us.jmiachyn.persistance.PeriodicElement;
 
 
-public class ElementDao {
+
+public class SearchEngine {
 	
 	private ServletContext context;
 	private final String ELEMENT_LIST_ATTRIBUTE = "elementList";
@@ -22,7 +24,7 @@ public class ElementDao {
 	private String elementNameToSearch;
 	
 	@SuppressWarnings("unchecked")
-	public ElementDao(ServletContext context) {
+	public SearchEngine(ServletContext context) {
 		this.context = context;
 		elementName = (ArrayList<String>) this.context.getAttribute(ELEMENT_NAME_ATTRIBUTE);
 		elementAbbr = (ArrayList<String>) this.context.getAttribute(ELEMENT_ABBR_ATTRUBUTE);

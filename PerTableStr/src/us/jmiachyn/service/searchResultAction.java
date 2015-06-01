@@ -8,7 +8,6 @@ import javax.servlet.ServletContext;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.util.ServletContextAware;
 
-import us.jmiachyn.persistance.ElementDao;
 import us.jmiachyn.persistance.PeriodicElement;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -28,8 +27,8 @@ public class searchResultAction extends ActionSupport implements ServletContextA
 	@Override
 	public void validate() {
 		
-		if(StringUtils.isEmpty(getSearchValue()) || StringUtils.isBlank(getSearchValue()))
-			addFieldError(INPUT, "enter element to search");
+		if(StringUtils.isEmpty(searchValue)|| StringUtils.isBlank(searchValue) || StringUtils.isNumeric(searchValue))
+			addFieldError("searchValue", "Enter element name to search");
 		
 		
 	}
@@ -37,7 +36,7 @@ public class searchResultAction extends ActionSupport implements ServletContextA
 	
 	public String execute(){
 		
-		listofFoundElements = new ElementDao(context).searchElement(searchValue);
+		listofFoundElements = new SearchEngine(context).searchElement(searchValue);
 	
 		if(listofFoundElements == null)
 			return NONE;

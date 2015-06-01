@@ -5,7 +5,6 @@ import javax.servlet.ServletContext;
 
 import org.apache.struts2.util.ServletContextAware;
 
-import us.jmiachyn.persistance.ElementDao;
 import us.jmiachyn.persistance.PeriodicElement;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -25,7 +24,7 @@ public class DetailsAction extends ActionSupport implements ServletContextAware 
 	@Override
 	public String execute(){
 		
-	this.element = new ElementDao(context).getElement(ID);	
+	this.element = new SearchEngine(context).getElement(ID);	
 	
 		return SUCCESS;
 	}

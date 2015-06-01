@@ -12,17 +12,33 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>List of Found Elements</title>
+<style type="text/css">
+<!--
+.style1 {
+	font-size: 20px;
+	font-weight: bold;
+}
+body {
+	background-color: #074358;
+	margin-top: 0px;
+}
+.style2 {
+	color: #FBE08B;
+	font-weight: bold;
+}
+-->
+        </style>
+
 </head>
 <body>
-<h1>Search Result: </h1>
+<h1 class="style2">Search Result: </h1>
 
 <ol>
 <s:iterator value="listofFoundElements" var="element">
-<li><s:property value="#element.elementName"/></li>
+<li class="style2"><a href="details?ID=<s:property value='#element.atomicNumber'/>"><s:property value="#element.elementName"/></a></li>
 </s:iterator>
 
 </ol>
-
 
 </body>
 </html>

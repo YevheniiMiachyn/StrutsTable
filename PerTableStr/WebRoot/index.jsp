@@ -16,8 +16,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Periodic Table</title>
 
-        <style type="text/css">
+  <style type="text/css">
 <!--
+
+
 .style1 {
 	font-size: 20px;
 	font-weight: bold;
@@ -30,8 +32,21 @@ body {
 	color: #FBE08B;
 	font-weight: bold;
 }
--->
+.errorMessage{
+color: #cc0033;
+font-weight: bold; 
+
+}
+
+.tdLabel{
+    color: #FBE08B;
+    font-weight: bold;
+  }
+  
+ -->
+        
         </style>
+
 </head>
 <body>
 
@@ -46,21 +61,15 @@ body {
                 requested String
           -->
     
-       <s:form  action="elementSearch" target="_blank">
-                <table width="500" border="0" cellspacing="0" cellpadding="2">
-                    <tr>
-                        <td align="center">
-                            <span class="style2">Search for an Element:                            </span>
-                            <strong>
-                            <input name="searchValue" type="text" id="searchValue" size="20" />
-                            </strong>                            <br>
-            <br />
-                            <input type="submit" name="button" id="button" value="Search Now"/>
-                            <br>
-                            <br>
-                    </td>
-                  </tr>
-                </table>
+       <s:form  action="elementSearch" >
+                
+                           
+                            <s:textfield label="Search for an Element" key="searchValue"/>                         
+                           
+                                                          
+                             <s:submit label="Submit"/>
+                            
+                
         </s:form>
  
  
