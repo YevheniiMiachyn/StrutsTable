@@ -64,7 +64,7 @@ font-weight: bold;
        <s:form  action="elementSearch" >
                 
                            
-                            <s:textfield label="Search for an Element" key="searchValue"/>                         
+                            <s:textfield label="Search for an Element" name="searchValue"/>                         
                            
                                                           
                              <s:submit label="Submit"/>

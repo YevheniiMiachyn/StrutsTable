@@ -1,10 +1,7 @@
 package us.jmiachyn.persistance;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
@@ -25,7 +22,7 @@ public class GetElementData{
 	private static PeriodicElement element;
 	private static ArrayList<PeriodicElement> elementList;
 	private static final String ELEMENT_LIST_PATH = "elementListPath";
-	private static ArrayList <String> elementNames, elementAbbr;
+	
 	
 	
 	
@@ -35,9 +32,7 @@ public class GetElementData{
 	public GetElementData(ServletContext context) throws IOException, URISyntaxException{
 		GetElementData.context = context;
 		elementList = new ArrayList<>();
-		elementNames = new ArrayList<>();
-		elementAbbr = new ArrayList<>();
-       	loadElements();
+		   	loadElements();
 		 
 		   
 		   
@@ -76,7 +71,7 @@ public class GetElementData{
 		  
 	    }
 	 
-	 /**   parses string into individual values and puts them in ArrayList collection of 'PeriodicElement' objects
+	 /**   Parse string into individual values and puts them in ArrayList collection of 'PeriodicElement' objects
 	 * 
 	 * @param rawOutput String
 	 */
@@ -90,9 +85,9 @@ public class GetElementData{
         
          element.setAtomicNumber(Integer.parseInt(splitOutput[0]));
          element.setElementAbbreviation(splitOutput[1]);
-         elementAbbr.add(splitOutput[1]);//adds element's abbreviation into collection
+         
          element.setElementName(splitOutput[2]);
-         elementNames.add(splitOutput[2]);//adds element names into collection
+         
          element.setAtomicWeight(Double.parseDouble(splitOutput[3]));
          element.setElementDescription(splitOutput[4]);
          element.setMetallic(Boolean.parseBoolean(splitOutput[5].toLowerCase()));
@@ -108,7 +103,7 @@ public class GetElementData{
 	 
 
 	
- 	/**Returns List of Elements
+ 	/**Returns ArrayList of Elements
 	 * 
 	 * @return elementList
 	 */
@@ -119,15 +114,7 @@ public class GetElementData{
 
 
 
-	public ArrayList<String> getElementNames() {
-		return elementNames;
-	}
-
-
-
-	public ArrayList<String> getElementAbbr() {
-		return elementAbbr;
-	}
+	
 		
 	
 

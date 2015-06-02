@@ -1,7 +1,7 @@
 package us.jmiachyn.service;
 
 import java.util.ArrayList;
-import java.util.ListIterator;
+
 
 
 import javax.servlet.ServletContext;
@@ -16,18 +16,13 @@ public class SearchEngine {
 	
 	private ServletContext context;
 	private final String ELEMENT_LIST_ATTRIBUTE = "elementList";
-	private final String ELEMENT_NAME_ATTRIBUTE = "elementName";
-	private final String ELEMENT_ABBR_ATTRUBUTE = "elementAbbr";
 	private PeriodicElement element;
 	private ArrayList<PeriodicElement> elements, foundElements;
-	private ArrayList<String> elementName, elementAbbr;
 	private String elementNameToSearch;
 	
 	@SuppressWarnings("unchecked")
 	public SearchEngine(ServletContext context) {
 		this.context = context;
-		elementName = (ArrayList<String>) this.context.getAttribute(ELEMENT_NAME_ATTRIBUTE);
-		elementAbbr = (ArrayList<String>) this.context.getAttribute(ELEMENT_ABBR_ATTRUBUTE);
 		elements = (ArrayList<PeriodicElement>) this.context.getAttribute(ELEMENT_LIST_ATTRIBUTE);
 		
 	}
@@ -87,6 +82,11 @@ public class SearchEngine {
 						return null;
 	}
 	
+	/**
+	 * search for possible matching elements using Levenshtein distance algorithm 
+	 * 
+	 * 
+	 */
 	private void findMatchingElements(){
 		String elemName;
 		int score;
