@@ -18,7 +18,8 @@
 
   <style type="text/css">
 <!--
-
+a:link { color: blue; }
+a:visted { color: purple; }
 
 .style1 {
 	font-size: 20px;
@@ -27,6 +28,7 @@
 body {
 	background-color: #074358;
 	margin-top: 0px;
+	
 }
 .style2 {
 	color: #FBE08B;
@@ -64,7 +66,7 @@ font-weight: bold;
        <s:form  action="elementSearch" >
                 
                            
-                            <s:textfield label="Search for an Element" name="searchValue"/>                         
+                            <s:textfield id="searchField" label="Search for an Element" name="searchValue"/>                         
                            
                                                           
                              <s:submit label="Submit"/>
